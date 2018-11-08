@@ -11,7 +11,16 @@ class HomeController < ApplicationController
 
   end
 
-  def hello
-  	@name=params['name']
+  def about 
+   
   end
+
+  def contact_us
+
+  end
+
+  def prices
+
+  end
+
 end
