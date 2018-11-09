@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 	root 'home#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 
-	# ---------- HomeController:
+	# ---------- Home Routes:
 	get '/home/about', to: 'home#about'
 
 	get '/home/contact_us', to: 'home#contact_us'
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	get '/home/prices', to: 'home#prices'
 
 
-	# ---------- BlogController:
+	# ------------ Blog Routes:
 	get 'blog/index', to: 'blog#index'
 
 	get 'blog/new', to: 'blog#new'
@@ -18,6 +18,14 @@ Rails.application.routes.draw do
 	get 'blog/show', to: 'blog#show'
 
 	get 'blog/edit', to: 'blog#edit'
+
+
+	#--------------- Admin Routes:
+	get 'admin/index'
+
+	get 'admin/show'
+
+	
 
 	
 	#get 'home', to: 'home#index' # evita poner el 'index' en la ruta
