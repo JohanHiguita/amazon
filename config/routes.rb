@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
 	root 'home#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 
 	# ---------- Home Routes:
@@ -24,6 +25,9 @@ Rails.application.routes.draw do
 	get 'admin/index'
 
 	get 'admin/show'
+
+	#Devise
+	devise_for :users
 
 	
 
