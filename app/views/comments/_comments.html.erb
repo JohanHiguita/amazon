@@ -1,0 +1,9 @@
+
+<!-- Creado en clase, pero está comentado en el show (ya tenía la renderización de los comentarios) -->
+<% @post.comments.each do |comment| %>
+	<strong>Commenter: </strong>
+	<%= comment.user.email %> 
+	<strong>Comment: </strong>
+	<%= comment.comment %>
+<% end %>
+
