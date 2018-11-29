@@ -1,65 +1,56 @@
 <div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="text-muted" href="#">Subscribe</a>
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Amazon Blog</a>
-      </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="text-muted" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-        </a>
-        <%= render "layouts/sign_in" %>
-      </div>
-    </div>
-  </header>
 
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <%= render "nav" %>
-    </nav>
-  </div>
+ <%= render "header" %>
 
-  <%= render "layouts/alerts" %>
+ <div class="nav-scroller py-1 mb-2">
+  <nav class="nav d-flex justify-content-between">
+    <%= render "nav" %>
+  </nav>
+</div>
 
-  <% if @jumbotron %>
-  <%= render "jumbotron" %>
-  <% end %>
+<%= render "layouts/alerts" %>
+
+<% if @jumbotron %>
+<%= render "jumbotron" %>
+<% end %>
 
 
 
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 font-italic border-bottom" id="posts">
-          <% if @jumbotron %>
-          Index
-          <% elsif %>
-          Filtered by: <b><%= params[:category] %></b>
-          <% end %>
-        </h3>
-
-        <% @posts.each do |post| %>
-        <div class="blog-post">
-          <h2 class="blog-post-title"><%= link_to post.title, post_path(post.id), class: "text-muted", style: "text-decoration: none" %></h2>
-          <p class="blog-post-meta"><%= time_ago_in_words(post.created_at) %> ago by <a href="#"><%= post.user.email %></a></p>
-          <p>
-            <% if post.content.length > 250 %>
-            <%= post.content.truncate(250) %>
-            <%= link_to "...Read More", post_path(post.id) %>
-            <% else %>
-            <%= post.content %>
-            <% end %>
-
-          </p>
-        </div><!-- /.blog-post -->
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-3 mb-4 font-italic border-bottom" id="posts">
+        <% if @jumbotron %>
+        Index
+        <% elsif %>
+        Filtered by: <b><%= params[:category] %></b>
         <% end %>
+      </h3>
+
+      <% @posts.each do |post| %>
+      <div class="blog-post">
+        <h2 class="blog-post-title"><%= link_to post.title, post_path(post.id), class: "text-muted", style: "text-decoration: none" %></h2>
+        <p class="blog-post-meta"><%= time_ago_in_words(post.created_at) %> ago by <a href="#"><%= post.user.email %></a>
+        </p>
+        <!-- <small>Category: <%#= Category.find(post.category_id).name %></small> -->
+        <small>Category: <%= post.category.name %></small>
 
 
-        <nav class="blog-pagination">
-          <%= will_paginate @posts, params: {anchor:"posts"}, previous_label: '&laquo;', next_label: '&raquo;' %>
+        <p>
+          <% if post.content.length > 250 %>
+          <%= post.content.truncate(250) %>
+          <%= link_to "...Read More", post_path(post.id) %>
+          <% else %>
+          <%= post.content %>
+          <% end %>
+
+        </p>
+      </div><!-- /.blog-post -->
+      <% end %>
+
+
+      <nav class="blog-pagination">
+        <%= will_paginate @posts, params: {anchor:"posts"}, previous_label: '&laquo;', next_label: '&raquo;' %>
         <!-- <a class="btn btn-outline-primary" href="#">Older</a>
           <a class="btn btn-outline-secondary disabled" href="#">Newer</a> -->
         </nav>

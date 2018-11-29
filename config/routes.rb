@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-	root 'home#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
+	root 'posts#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 	# resources :posts
 	resources :posts do
 		resources :comments, only: [:create]
