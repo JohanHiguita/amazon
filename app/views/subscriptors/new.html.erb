@@ -1,0 +1,49 @@
+
+
+<body class="text-center">
+
+	<%= form_for @subscriptor do |f| %>
+	<% if @subscriptor.errors.any? %>
+	<div class="alert alert-danger alert-block alert-fized">
+		<p>
+			<%= pluralize(@subscriptor.errors.count, "error")  %>
+			prevented this subscriptor from saving
+		</p>
+		<ol>
+			<% @subscriptor.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ol>
+
+	</div>
+	<% end %>
+	
+	<%= image_tag("bootstrap-solid.jpeg", width: '72', height: '72', class: 'mb-4') %>
+	
+	<h1 class="h3 mb-3 font-weight-normal">Subscribe</h1>
+	<label for="inputName" class "sr-only">Name</label>
+	<%= f.text_field :name, class: "form-control", placeholder: "Your name", autofocus: true %>
+	<br>
+	<label for="inputEmail" class "sr-only">email</label>
+	<%= f.email_field :email, class: "form-control", placeholder: "Your email" %> <br>
+	<%= f.submit class: "btn btn-primary btn-lg btn-block" %>
+	<br>
+
+	<%= link_to "Back", :back %>
+	<p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+	<!-- <div class="form-group">
+		<label for="exampleFormControlInput1">Name:</label>
+		<%#= f.text_field :name, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<label for="exampleFormControlTextarea1">email:</label>
+		<%#= f.email_field :email, class: "form-control" %>
+	</div>
+	<%#= f.submit class: "btn btn-primary" %> -->
+	<% end %>
+
+</body>
+
+
+
+

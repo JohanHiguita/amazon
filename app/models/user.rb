@@ -16,4 +16,9 @@ class User < ApplicationRecord
   	self.role = :user
   end
 
+
+  def subscriptor?
+    Subscriptor.all.map(&:email).include? self.email
+  end
+
 end

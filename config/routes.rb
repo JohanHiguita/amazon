@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 		resources :comments, only: [:create]
 	end
 
+	resources :subscriptors, only: [:new, :create]
+
 
 	# post '/comments/:id_post', to 'comments/create'#ruta que me crea un comenario
 	# ---------- Home Routes:

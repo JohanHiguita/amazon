@@ -27,11 +27,11 @@
 									<%= pluralize(@post.errors.count, "error")  %>
 									prevented this post from saving
 								</p>
-								<ol>
+								<ul>
 									<% @post.errors.full_messages.each do |msg| %>
 										<li><%= msg %></li>
 									<% end %>
-								</ol>
+								</ul>
 								
 							</div>
 						<% end %>
@@ -50,16 +50,10 @@
 					</div>
 					<%= f.submit class: "btn btn-primary" %>
 					<% end %>
-
 				</p>
-
 			</div><!-- /.blog-post -->
-
 		</div><!-- /.blog-main -->
-
-
 	</div><!-- /.row -->
-
 </main><!-- /.container -->
 
 <%= render "layouts/footer" %>
