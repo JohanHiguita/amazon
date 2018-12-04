@@ -1,0 +1,55 @@
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary"><%= @last_post_shoes.category.name %></strong>
+        <h3 class="mb-0">
+
+          <% if @last_post_shoes.title.length > 20%>
+          <%= link_to @last_post_shoes.title.truncate(20), post_path(@last_post_shoes.id), class:"text-dark"  %>
+          <% else %>
+          <%= link_to @last_post_shoes.title.truncate(20), post_path(@last_post_shoes.id), class:"text-dark" %>
+          <% end %>
+
+        </h3>
+        <div class="mb-1 text-muted"><%= time_ago_in_words( @last_post_shoes.created_at)%> ago</div>
+        <p class="card-text mb-auto">
+          <% if @last_post_shoes.content.length > 60 %>
+          <%= @last_post_shoes.content.truncate(60) %>
+          <p class="lead mb-0"><%= link_to "...Read More", post_path(@last_post_shoes.id), class: "font-weight" %></p>
+          <% else %>
+          <%= @last_post_shoes.content %>
+          <% end %>
+
+        </p>
+        
+      </div>
+      <%= image_tag('download.jpeg', class: "card-img-right flex-auto d-none d-md-block")  %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-success"><%= @last_post_glasses.category.name %></strong>
+        <h3 class="mb-0">
+          <% if @last_post_glasses.title.length > 20%>
+          <%= link_to @last_post_glasses.title.truncate(20), post_path(@last_post_glasses.id), class:"text-dark"  %>
+          <% else %>
+          <%= link_to @last_post_glasses.title.truncate(20), post_path(@last_post_glasses.id), class:"text-dark" %>
+          <% end %>
+        </h3>
+        <div class="mb-1 text-muted"><%= time_ago_in_words( @last_post_glasses.created_at)%> ago</div>
+        <p class="card-text mb-auto">
+          <% if @last_post_glasses.content.length > 40 %>
+          <%= @last_post_glasses.content.truncate(40) %>
+          <p class="lead mb-0"><%= link_to "...Read More", post_path(@last_post_glasses.id), class: "font-weight" %></p>
+          <% else %>
+          <%= @last_post_glasses.content %>
+          <% end %>
+        </p>
+
+      </div>
+      <%= image_tag('download.jpeg', class: "card-img-right flex-auto d-none d-md-block")  %>
+    </div>
+  </div>
+</div>
