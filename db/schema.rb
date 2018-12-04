@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2018_11_29_005246) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.index ["course_id"], name: "index_courses_students_on_course_id"
+    t.index ["student_id"], name: "index_courses_students_on_student_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -39,6 +46,12 @@ ActiveRecord::Schema.define(version: 2018_11_29_005246) do
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["category_id_id"], name: "index_posts_on_category_id_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subscriptors", force: :cascade do |t|
