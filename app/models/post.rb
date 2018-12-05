@@ -7,5 +7,5 @@ class Post < ApplicationRecord
 
 
   # scope :published, -> {where(published: true)}
-  scope :popular, -> {where("views > ?", 10)} #suponiendo sí se tiene un atributo "views"
+  #scope :popular, -> {where("views > ?", 10)} #suponiendo sí se tiene un atributo "views"
 end
