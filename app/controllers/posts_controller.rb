@@ -21,7 +21,7 @@ def index
    # @last_post_glasses = (Post.where(category_id: 8)).last
    @shoes_category = Category.find_by(name: "Shoes")
    @last_post_shoes = @shoes_category.posts.last
-   @glasses_category = Category.find_by(name: "Woman")
+   @glasses_category = Category.find_by(name: "Glasses")
    @last_post_glasses = @glasses_category.posts.last
  else
   @category_id=Category.find_by(name: params[:category]).id
