@@ -71,6 +71,12 @@ def create
       UserNotifierMailer.new_post_notifying_user(user_email, title, id).deliver_now
     end
 
+    subscriptors =Subscriptor.all
+    subscriptors.each do |subscriptor|
+      subscriptor_email = subscriptor.email
+      SubscriptorNotifierMailer.new_post_notifying_subscriptor(subscriptor_email, title, id).deliver_now
+    end
+
     
     flash[:notice]= "Creado!"
     redirect_to posts_path
