@@ -58,9 +58,20 @@ def destroy
 end
 
 def create
+
   @post = Post.new(post_params)
   @post.user = current_user
   if @post.save
+
+    title=@post.title
+    id=@post.id
+    users = User.where(role: "user")
+    users.each do |user|
+      user_email = user.email
+      UserNotifierMailer.new_post_notifying_user(user_email, title, id).deliver_now
+    end
+
+    
     flash[:notice]= "Creado!"
     redirect_to posts_path
 
