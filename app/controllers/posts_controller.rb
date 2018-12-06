@@ -17,8 +17,6 @@ def index
    @posts=Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
    @jumbotron=true
    @last_post = Post.last
-   # @last_post_shoes = (Post.where(category_id: 6)).last
-   # @last_post_glasses = (Post.where(category_id: 8)).last
    @shoes_category = Category.find_by(name: "Shoes")
    @last_post_shoes = @shoes_category.posts.last
    @glasses_category = Category.find_by(name: "Glasses")
