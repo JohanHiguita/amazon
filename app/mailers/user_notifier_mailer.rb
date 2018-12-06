@@ -14,8 +14,8 @@ class UserNotifierMailer < ApplicationMailer
 		@email = email
 		@title =title
 		@id = id
-		@url ="http://localhost:3000/posts/#{@id}"
-		#@url = "https://amazon-johanhiguita.herokuapp.com/posts/#{@id}" #para producción
+		#@url ="http://localhost:3000/posts/#{@id}"
+		@url = "https://amazon-johanhiguita.herokuapp.com/posts/#{@id}" #para producción
 		mail to: email, subject: "#{@title} New blog post on Amazon-clone" 
 	end
 
