@@ -63,18 +63,20 @@ def create
   @post.user = current_user
   if @post.save
 
-    title=@post.title
+    title= @post.title
     id=@post.id
     users = User.where(role: "user")
+    type_user ="User"
     users.each do |user|
       user_email = user.email
-      UserNotifierMailer.new_post_notifying_user(user_email, title, id).deliver_now
+      UserNotifierMailer.new_post_notifying(user_email, title, id, type_user).deliver_now
     end
 
     subscriptors =Subscriptor.all
+    type_user ="Subscriptor"
     subscriptors.each do |subscriptor|
       subscriptor_email = subscriptor.email
-      SubscriptorNotifierMailer.new_post_notifying_subscriptor(subscriptor_email, title, id).deliver_now
+      UserNotifierMailer.new_post_notifying(subscriptor_email, title, id, type_user).deliver_now
     end
 
     
@@ -91,6 +93,23 @@ end
 def update
   @post=Post.find(params[:id])
   if @post.update(post_params)
+    title= @post.title
+    id=@post.id
+    users = User.where(role: "user")
+    type_user ="User"
+
+    users.each do |user|
+      user_email = user.email
+      UserNotifierMailer.edit_post_notifying(user_email, title, id, type_user).deliver_now
+    end
+
+    subscriptors =Subscriptor.all
+    type_user ="Subscriptor"
+    subscriptors.each do |subscriptor|
+      subscriptor_email = subscriptor.email
+      UserNotifierMailer.edit_post_notifying(subscriptor_email, title, id, type_user).deliver_now
+    end
+
     flash[:notice]= "Editado!"
     redirect_to posts_path  
   else
