@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 	resources :subscriptors, only: [:new, :create]
 
+	get "admin", to: 'admin#index'
 
 	# post '/comments/:id_post', to 'comments/create'#ruta que me crea un comenario
 	# ---------- Home Routes:
