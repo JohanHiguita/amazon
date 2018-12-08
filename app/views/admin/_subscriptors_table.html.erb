@@ -1,0 +1,24 @@
+<h3>Subscriptors</h3>
+<div class="table-responsive">
+	<table class="table table-striped table-sm">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @subscriptors.each do |subscriptor| %>
+			<tr>
+				<th><%= subscriptor.id %></th>
+				<td><%= subscriptor.name %></td>
+				<td><%= subscriptor.email %></td>
+				
+			</tr>
+			<% end %>
+			
+			
+		</tbody>
+	</table>		
+</div><br>
