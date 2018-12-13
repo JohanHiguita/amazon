@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
 
-
-
 	root 'posts#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 	# resources :posts
 	resources :posts do
 		resources :comments, only: [:create]
+		member do
+			patch :publish
+		end
 	end
 
 	resources :subscriptors, only: [:new, :create]
 
 	get "admin", to: 'admin#index'
+	get 'admin/products', to: 'admin#products'
+
+	resources :products, only: [:new, :create]
 
 	# post '/comments/:id_post', to 'comments/create'#ruta que me crea un comenario
 	# ---------- Home Routes:

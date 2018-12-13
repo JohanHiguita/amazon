@@ -118,11 +118,17 @@ def update
   end
 end
 
+def publish
+  sleep 2
+  @post=Post.find(params[:id])
+  @post.update(published_at: Time.zone.now)
+end
+
 
 private
 
 def post_params
-  params.require(:post).permit(:user_id, :title, :content, :category_id) #solo permite estos datos
+  params.require(:post).permit(:user_id, :title, :content, :category_id, :published_at) #solo permite estos datos
   
 end
 
