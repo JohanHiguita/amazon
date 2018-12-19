@@ -15,4 +15,16 @@ class SubscriptorTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  test "Subscriptor should have a name" do
+  	@subscriptor = Subscriptor.new
+  	assert_not @subscriptor.save
+  end
+
+  test "Should return a subscriptor with capitalized name" do 
+  	@subscriptor = Subscriptor.new(name: "johan")
+  	@subscriptor.capitalize_name
+  	assert_equal("Johan", @subscriptor.name)
+  end
+
 end

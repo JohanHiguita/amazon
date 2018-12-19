@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'order_items/create'
+  get 'order_items/update'
+  get 'order_items/destroy'
+  get 'carts/show'
 	root 'posts#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 	# resources :posts
 	resources :posts do
@@ -9,12 +13,18 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :subscriptors, only: [:new, :create]
+	
 
 	get "admin", to: 'admin#index'
 	get 'admin/products', to: 'admin#products'
 
-	resources :products, only: [:new, :create]
+	resources :products, only: [:index, :new, :create]
+	resources :subscriptors
+	resource :cart, only: [:show]
+	resources :order_items, only: [:create, :update, :destroy]
+	
+
+	
 
 	# post '/comments/:id_post', to 'comments/create'#ruta que me crea un comenario
 	# ---------- Home Routes:

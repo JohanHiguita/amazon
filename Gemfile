@@ -35,6 +35,10 @@ gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 gem "font-awesome-rails"
+gem 'rails-controller-testing'
+gem 'faker', '~> 1.6', '>= 1.6.6'
+
+
 
 
 # Use Capistrano for deployment
@@ -48,6 +52,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'minitest-reporters'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'simplecov'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -70,7 +78,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '1.2.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
