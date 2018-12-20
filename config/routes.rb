@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
-  get 'order_items/create'
-  get 'order_items/update'
-  get 'order_items/destroy'
-  get 'carts/show'
-	root 'posts#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
+	root 'home#index'	
+	get 'order_items/create'
+	get 'order_items/update'
+	get 'order_items/destroy'
+	get 'carts/show'
+	#root 'posts#index' #ir a la página de inicio (se establece una sola vez, solo hay un home)
 	# resources :posts
 	resources :posts do
 		resources :comments, only: [:create]

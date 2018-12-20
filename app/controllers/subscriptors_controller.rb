@@ -67,17 +67,9 @@ class SubscriptorsController < ApplicationController
 		@subscriptor =	Subscriptor.find(params[:id])
 		@subscriptor.destroy
 		respond_to do |format|
-			if @subscriptor.update(subscriptor_params)
-				format.html { redirect_to subscriptor_path(@subscriptor), notice: "Eliminado"}
-				format.json {head :no_content}
-				
-			else
-				format.html { render :edit}
-				format.json {render json: @subscriptor.errors, status: :unprocessable_entity}
-			end
+			
+			format.json { head :no_content }
 		end
-
-
 	end
 
 

@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @products = Product.all
+    @order_item = current_order.order_items.new
   	#comunicación con la BBDD
   	#Variables de instancio que se pueden renderizar en la vista:
   	#Asume que hay un view lamado "index" y va allá
